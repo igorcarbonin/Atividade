@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas em JavaScript</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        .titulo1 {
+            color: blue;
+        }
+        .titulo2 {
+            color: green;
+        }
+        .titulo3 {
+            color: red;
+        }
+        .titulo4 {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atividade - Programas em JavaScript</h1>
+
+    <!-- Programa 1: Verificar se um número é par ou ímpar -->
+    <h2 class="titulo1">Programa 1: Verificar se um número é par ou ímpar</h2>
+    <label for="numero">Digite um número:</label>
+    <input type="number" id="numero">
+    <button onclick="verificarParOuImpar()">Verificar</button>
+    <p id="resultado1"></p>
+
+    <!-- Programa 2: Imprimir números em ordem decrescente -->
+    <h2 class="titulo2">Programa 2: Imprimir números em ordem decrescente</h2>
+    <label for="numeros">Digite 5 números separados por espaços:</label>
+    <input type="text" id="numeros">
+    <button onclick="ordemDecrescente()">Ordenar</button>
+    <p id="resultado2"></p>
+
+    <!-- Programa 3: Calcular o índice de IMC -->
+    <h2 class="titulo3">Programa 3: Calcular o índice de IMC</h2>
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso">
+    <label for="altura">Altura (m) "Ex: 1,87":</label>
+    <input type="text" id="altura">
+    <button onclick="calcularIMC()">Calcular</button>
+    <p id="resultado3"></p>
+
+    <!-- Programa 4: Verificar se três valores formam um triângulo -->
+    <h2 class="titulo4">Programa 4: Verificar se três valores formam um triângulo</h2>
+    <label for="lado1">Lado 1:</label>
+    <input type="number" id="lado1">
+    <label for="lado2">Lado 2:</label>
+    <input type="number" id="lado2">
+    <label for="lado3">Lado 3:</label>
+    <input type="number" id="lado3">
+    <button onclick="verificarTriangulo()">Verificar</button>
+    <p id="resultado4"></p>
+
+    <script>
+        // Programa 1: Verificar se um número é par ou ímpar
+        function verificarParOuImpar() {
+            var numero = parseInt(document.getElementById("numero").value);
+            var resultado = (numero % 2 === 0) ? "Par" : "Ímpar";
+            document.getElementById("resultado1").innerHTML = "O número " + numero + " é " + resultado;
+        }
+
+        // Programa 2: Imprimir números em ordem decrescente
+        function ordemDecrescente() {
+            var numeros = document.getElementById("numeros").value.split(" ").map(Number);
+            numeros.sort((a, b) => b - a);
+            document.getElementById("resultado2").innerHTML = "Números em ordem decrescente: " + numeros.join(", ");
+        }
+
+        // Programa 3: Calcular o índice de IMC
+        function calcularIMC() {
+            var peso = parseFloat(document.getElementById("peso").value);
+            var altura = parseFloat(document.getElementById("altura").value.replace(",", "."));
+            var resultado = peso / (altura * altura);
+            document.getElementById("resultado3").innerHTML = "O índice de IMC é: " + resultado.toFixed(2);
+        }
+
+        // Programa 4: Verificar se três valores formam um triângulo
+        function verificarTriangulo() {
+            var lado1 = parseFloat(document.getElementById("lado1").value);
+            var lado2 = parseFloat(document.getElementById("lado2").value);
+            var lado3 = parseFloat(document.getElementById("lado3").value);
+            if (lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1) {
+                if (lado1 === lado2 && lado2 === lado3) {
+                    document.getElementById("resultado4").innerHTML = "É um triângulo Equilátero";
+                } else if (lado1 === lado2 || lado1 === lado3 || lado2 === lado3) {
+                    document.getElementById("resultado4").innerHTML = "É um triângulo Isósceles";
+                } else {
+                    document.getElementById("resultado4").innerHTML = "É um triângulo Escaleno";
+                }
+            } else {
+                document.getElementById("resultado4").innerHTML = "Não é um triângulo";
+            }
+        }
+    </script>
+</body>
+</html>
